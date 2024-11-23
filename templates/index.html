@@ -25,9 +25,9 @@
             Aplicacion para la consulta del Clima
         </h1>
         <br>
-        <form>
+        <form method="post">
             <div class="input-group mb-3">
-                <input type="text" class="form-control"
+                <input type="text" class="form-control" name="txtCiudad" id="txtCiudad"
                     placeholder="Escriba el nombre de la ciudad que desea consultar el clima">
             </div>
             <center>
@@ -38,7 +38,35 @@
                 </button>
             </center>
         </form>
+        <br>
+
+        <!-- Carta del clima de la ciudad -->
+        {% if cod == 200 %}
+        <div class="card animate__animated animate__backInLeft" style="width: 18rem;">
+            <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="icon">
+            <!-- <img src="http://openweathermap.org/img/w/01n.png" class="card-img-top" alt="..."> -->
+            <div class="card-body">
+                <h4 class="card-title">{{ ciudad }}</h4>
+                <p class="card-text">Humedad : {{humedad}} </p>
+                <p class="card-text">Presion : {{presion}}</p>
+                <p class="card-text">Descripcion : {{descripcion}}</p>
+                <!-- <a href="#" class="btn btn-primary">Agregar</a> -->
+            </div>
+        </div>
+        {% endif %}
+
+        {% if cod == '404' %}
+        <h1>Error</h1>
+        {% endif %}
+
+
     </div>
 </body>
+<footer class="bg-info text-center text-lg-start fixed-bottom">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Copyright:
+        <a class="text-dark" href="https://ug.edu.ec/">Jose Saturnino Cordova Aragundi</a>
+    </div>
+</footer>
 
 </html>
